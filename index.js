@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 app.use(express.json())
-const port = 8000;
+const port =  process.env.PORT || 8000;
 const restaurant={
     restaurant: {
         id:1,
