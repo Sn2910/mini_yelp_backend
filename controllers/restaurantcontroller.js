@@ -22,6 +22,17 @@ catch(err){
 }
 
 }
+export const getRestaurants = async(req,res)=>{
+    try{
+        const restaurants = await Restaurant.find({})
+        res.status(200).json(restaurants)
+    }
+    catch(err){
+        res.status(200).json(err)
+    
+    }
+    
+    }
 export const updateRestaurant = async (req, res) => {
     try {
       const updatedRestaurant = await Restaurant.findByIdAndUpdate(

@@ -1,7 +1,7 @@
 import express from 'express';
-import {createRestaurant, getRestaurant, updateRestaurant} from "../controllers/restaurantcontroller.js"
+import {createRestaurant, getRestaurant, getRestaurants, updateRestaurant} from "../controllers/restaurantcontroller.js"
 const router = express.Router()
-const restaurant = {
+/* const restaurant = {
     restaurant: {
         id: 1,
         name: 'Burger King',
@@ -50,10 +50,8 @@ const restaurants = [
         tags: ["Vegan", "Drinks"]
 
     }
-];
-router.get('/', (req, res) => {
-    res.send(restaurants)
-})
+]; */
+router.get('/', getRestaurants)
 router.get('/:id', getRestaurant)
 router.post('/', createRestaurant)
 router.put('/:id', updateRestaurant)
