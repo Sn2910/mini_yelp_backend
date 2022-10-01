@@ -1,12 +1,15 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
-const commentSchema = new Schema({
-  author: String,
-  text: String,
-  created: ,
-  time: ,
-});
-
-module.exports = mongoose.model("Comment", studentSchema);
+const commentSchema = new Schema(
+  {
+    author: String,
+    text: String,
+    restaurant_id: String,
+  },
+  {
+    timestamps: true,
+  }
+);
+export default mongoose.model("Comment", commentSchema);
