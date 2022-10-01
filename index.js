@@ -5,9 +5,12 @@ import restaurantRoute from "./routes/restaurants.js";
 import tagRoute from "./routes/tags.js";
 import cityRoute from "./routes/cities.js";
 import Comment from "./model/Comments.js";
+import cors from "cors"
+
 const app = express();
 dotenv.config();
 app.use(express.json());
+app.use(cors())
 const port = process.env.PORT || 8000;
 
 function _addComment(dbComment) {
