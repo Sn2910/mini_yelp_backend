@@ -1,6 +1,6 @@
 import Restaurant from "../model/Restaurants.js"
 import Comment from "../model/Comments.js"
-import { getcomments } from "./comments_operation.js"
+import { getComments } from "./comments_operation.js"
 export const createRestaurant = async(req,res)=>{
     const newRestaurant =  new Restaurant(req.body)
 try{
@@ -16,7 +16,11 @@ catch(err){
 export const getRestaurant = async(req,res)=>{
 try{
     const restaurant = await Restaurant.findById(req.params.id)
-    res.status(200).json(restaurant)
+    const comments = await getComments(restaurant._id)
+    restaurant.comments =comments
+    console.log("comments" , comments)
+
+    res.status(200).json({...restaurant.toObject(),comments})
 }
 catch(err){
     res.status(200).json(err)
@@ -47,22 +51,4 @@ export const updateRestaurant = async (req, res) => {
         res.status(200).json(err)
     }
   };
-  export const getRestaurantsComment = async(req,res)=>{
-    try{
-        const restaurant = await Restaurant.findById(req.params.id);
-        console.log(restaurant)
-       
-        restaurant ={
-            comments:[]
-        }
-       const comments = await getcomments()
-       console.log(comments)
-
-        res.status(200).json(list)
-    }
-    catch(err){
-        res.status(200).json(err)
-    
-    }
-    
-    }
+ 

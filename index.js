@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import restaurantRoute from "./routes/restaurants.js";
 import tagRoute from "./routes/tags.js";
 import cityRoute from "./routes/cities.js";
-import { getcomments, insertComment } from "./controllers/comments_operation.js";
+import { insertComment } from "./controllers/comments_operation.js";
 import cors from "cors";
 const app = express();
 
@@ -55,7 +55,6 @@ app.post("/comment", async (req, res) => {
   });
   res.send(newComment).status(201);
 });
-app.get("/comment",getcomments)
 function _addComment(dbComment) {
   return {
     author: dbComment.author,
