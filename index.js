@@ -1,4 +1,5 @@
 import * as dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
 import restaurantRoute from "./routes/restaurants.js";
@@ -8,7 +9,7 @@ import Comment from "./model/Comments.js";
 import cors from "cors"
 
 const app = express();
-dotenv.config();
+
 app.use(express.json());
 app.use(cors())
 const port = process.env.PORT || 8000;
