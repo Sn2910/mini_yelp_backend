@@ -1,5 +1,4 @@
-import * as dotenv from "dotenv";
-dotenv.config();
+import {} from 'dotenv/config'
 import express from "express";
 import mongoose from "mongoose";
 import restaurantRoute from "./routes/restaurants.js";
