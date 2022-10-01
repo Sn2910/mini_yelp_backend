@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "engines": {
     "node": "16.15.1"
-    },
+  },
   "description": "Mini Yelp Project",
   "main": "index.js",
   "type": "module",
