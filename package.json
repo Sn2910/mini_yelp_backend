@@ -1,9 +1,6 @@
 {
   "name": "mini_yelp_backend",
   "version": "1.0.0",
-  "engines": {
-    "node": "12.11.1"
-    },
   "description": "Mini Yelp Project",
   "main": "index.js",
   "type": "module",
