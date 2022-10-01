@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import restaurantRoute from "./routes/restaurants.js";
 import tagRoute from "./routes/tags.js";
 import cityRoute from "./routes/cities.js";
-/* import Comment from "./model/Comments.js"; */
+ import Comment from "./model/Comments.js"; 
 import cors from "cors"
 
 const app = express();
@@ -47,7 +47,7 @@ app.post("/tags", (req, res) => {
   res.send({ status: "Tags data created" }).status(201);
 });
  */
-/* app.post("/comment", async (req, res) => {
+ app.post("/comment", async (req, res) => {
   const newComment = await Comment.create({
     author: req.body.author,
     text: req.body.text,
@@ -65,7 +65,7 @@ function _addComment(dbComment) {
       timestamps: dbComment.timestamps,
       restaurant_id: dbComment.restaurant_id,
     };
-  } */
+  } 
 app.listen(port, () => {
   connect();
   console.log("Server started at port " + port);
