@@ -61,8 +61,6 @@ router.get("/:id", getRestaurant);
 router.post("/", createRestaurant);
 router.put("/:id", updateRestaurant);
 
-router.get("/:id/comment", (req, res) => {
-  res.status(201).send({ status: "Comment Added" });
-});
+
 
 export default router;

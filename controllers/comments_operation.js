@@ -20,3 +20,10 @@ export async function insertComment(update) {
   });
   return newComment;
 }
+export async function getComments(restaurantId){
+      const comments = await Comment.find({restaurant_id: restaurantId})
+      console.log(comments)
+      return comments;
+    
+  
+  }
