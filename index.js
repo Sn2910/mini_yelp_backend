@@ -1,6 +1,6 @@
-import dotenv  from "dotenv"
-import express from "express";
+import * as dotenv from 'dotenv';
 dotenv.config()
+import express from "express";
 import mongoose from "mongoose";
 import restaurantRoute from "./routes/restaurants.js";
 import tagRoute from "./routes/tags.js";
