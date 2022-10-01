@@ -1,3 +1,4 @@
+import express from 'express';
 const router = express.Router()
 const restaurant={
     restaurant: {
@@ -50,18 +51,12 @@ const restaurants =[
     }
 ];
 router.get('/',(req,res)=>{
-
-    res.send('Hello World').status(200)
-})
-
-
-router.get('/restaurants',(req,res)=>{
     res.send(restaurants)
 })
-router.get('/restaurants/:id',(req,res)=>{
+router.get('/:id',(req,res)=>{
     res.send(restaurant).status(200)
 })
-router.post('/restaurants',(req,res)=>{
+router.post('/',(req,res)=>{
     res.status(201).send({status:'Restaurants data created'})
 })
 export default router;

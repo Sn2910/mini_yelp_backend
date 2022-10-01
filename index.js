@@ -1,6 +1,9 @@
 import * as dotenv from "dotenv";
 import express from "express";
 import mongoose from 'mongoose';
+import restaurantRoute from './routes/restaurants.js'
+import tagRoute from "./routes/tags.js"
+import cityRoute from "./routes/cities.js"
 const app = express()
 dotenv.config()
 app.use(express.json())
@@ -24,6 +27,9 @@ db.on("disconnected",()=>{
 db.on("connected",()=>{
     console.log("mongoDB connected!")
 })
+app.use('/restaurants',restaurantRoute)
+app.use('/tags',tagRoute)
+app.use('/cities',cityRoute)
 
 
 
