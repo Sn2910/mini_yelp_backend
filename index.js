@@ -13,15 +13,7 @@ app.use(express.json());
 app.use(cors())
 const port = process.env.PORT || 8000;
 
-function _addComment(dbComment) {
-  return {
-    author: dbComment.author,
-    text: dbComment.text,
-    createdAt: dbComment.createdAt,
-    timestamps: dbComment.timestamps,
-    restaurant_id: dbComment.restaurant_id,
-  };
-}
+
 
 const connect = async () => {
   try {
@@ -43,7 +35,7 @@ app.use("/restaurants", restaurantRoute);
 app.use("/tags", tagRoute);
 app.use("/cities", cityRoute);
 
-app.get("/tags", (req, res) => {
+/* app.get("/tags", (req, res) => {
   res.send({ status: "Read tags succesfully" }).status(200);
 });
 
@@ -53,7 +45,7 @@ app.get("/tags/:id", (req, res) => {
 app.post("/tags", (req, res) => {
   res.send({ status: "Tags data created" }).status(201);
 });
-
+ */
 app.post("/comment", async (req, res) => {
   const newComment = await Comment.create({
     author: req.body.author,
@@ -64,7 +56,15 @@ app.post("/comment", async (req, res) => {
   });
   res.send(newComment).status(201);
 });
-
+function _addComment(dbComment) {
+    return {
+      author: dbComment.author,
+      text: dbComment.text,
+      createdAt: dbComment.createdAt,
+      timestamps: dbComment.timestamps,
+      restaurant_id: dbComment.restaurant_id,
+    };
+  }
 app.listen(port, () => {
   connect();
   console.log("Server started at port " + port);
