@@ -20,3 +20,14 @@ export async function insertComment(update) {
   });
   return newComment;
 }
+export const getcomments = async(req,res)=>{
+  try{
+      const comments = await Comment.find({})
+      res.status(200).json(comments)
+  }
+  catch(err){
+      res.status(200).json(err)
+  
+  }
+  
+  }

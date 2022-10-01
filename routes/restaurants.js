@@ -3,6 +3,7 @@ import {
   createRestaurant,
   getRestaurant,
   getRestaurants,
+  getRestaurantsComment,
   updateRestaurant,
 } from "../controllers/restaurantcontroller.js";
 const router = express.Router();
@@ -61,8 +62,6 @@ router.get("/:id", getRestaurant);
 router.post("/", createRestaurant);
 router.put("/:id", updateRestaurant);
 
-router.get("/:id/comment", (req, res) => {
-  res.status(201).send({ status: "Comment Added" });
-});
+router.get("/:id/comment", getRestaurantsComment);
 
 export default router;
