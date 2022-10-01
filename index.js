@@ -1,20 +1,17 @@
-import dotenv from 'dotenv';
-dotenv.config()
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
 import restaurantRoute from "./routes/restaurants.js";
 import tagRoute from "./routes/tags.js";
 import cityRoute from "./routes/cities.js";
- import Comment from "./model/Comments.js"; 
-import cors from "cors"
-
+import { insertComment } from "./controllers/comments_operation.js";
+import cors from "cors";
 const app = express();
 
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 const port = process.env.PORT || 8000;
-
-
 
 const connect = async () => {
   try {
@@ -39,16 +36,17 @@ app.use("/cities", cityRoute);
 /* app.get("/tags", (req, res) => {
   res.send({ status: "Read tags succesfully" }).status(200);
 });
-
+// 
 app.get("/tags/:id", (req, res) => {
   res.send({ status: "Read single tag succesfully" }).status(200);
 });
 app.post("/tags", (req, res) => {
   res.send({ status: "Tags data created" }).status(201);
 });
- */
- app.post("/comment", async (req, res) => {
-  const newComment = await Comment.create({
+*/
+
+app.post("/comment", async (req, res) => {
+  const newComment = await insertComment({
     author: req.body.author,
     text: req.body.text,
     createdAt: req.body.createdAt,
@@ -58,14 +56,14 @@ app.post("/tags", (req, res) => {
   res.send(newComment).status(201);
 });
 function _addComment(dbComment) {
-    return {
-      author: dbComment.author,
-      text: dbComment.text,
-      createdAt: dbComment.createdAt,
-      timestamps: dbComment.timestamps,
-      restaurant_id: dbComment.restaurant_id,
-    };
-  } 
+  return {
+    author: dbComment.author,
+    text: dbComment.text,
+    createdAt: dbComment.createdAt,
+    timestamps: dbComment.timestamps,
+    restaurant_id: dbComment.restaurant_id,
+  };
+}
 app.listen(port, () => {
   connect();
   console.log("Server started at port " + port);

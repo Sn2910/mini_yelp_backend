@@ -1,6 +1,11 @@
-import express from 'express';
-import {createRestaurant, getRestaurant, getRestaurants, updateRestaurant} from "../controllers/restaurantcontroller.js"
-const router = express.Router()
+import express from "express";
+import {
+  createRestaurant,
+  getRestaurant,
+  getRestaurants,
+  updateRestaurant,
+} from "../controllers/restaurantcontroller.js";
+const router = express.Router();
 /* const restaurant = {
     restaurant: {
         id: 1,
@@ -51,9 +56,13 @@ const restaurants = [
 
     }
 ]; */
-router.get('/', getRestaurants)
-router.get('/:id', getRestaurant)
-router.post('/', createRestaurant)
-router.put('/:id', updateRestaurant)
-   
+router.get("/", getRestaurants);
+router.get("/:id", getRestaurant);
+router.post("/", createRestaurant);
+router.put("/:id", updateRestaurant);
+
+router.get("/:id/comment", (req, res) => {
+  res.status(201).send({ status: "Comment Added" });
+});
+
 export default router;
