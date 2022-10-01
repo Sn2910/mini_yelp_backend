@@ -1,4 +1,4 @@
-import Comment from "../model/Comments.js";
+import RestaurantComment from "../model/RestaurantComment.js";
 
 function _addComment(dbComment) {
   return {
@@ -11,7 +11,7 @@ function _addComment(dbComment) {
 }
 
 export async function insertComment(update) {
-  const newComment = await Comment.create({
+  const newComment = await RestaurantComment.create({
     author: update.author,
     text: update.text,
     createdAt: update.createdAt,
@@ -21,7 +21,7 @@ export async function insertComment(update) {
   return newComment;
 }
 export async function getComments(restaurantId){
-      const comments = await Comment.find({restaurant_id: restaurantId})
+      const comments = await RestaurantComment.find({restaurant_id: restaurantId})
       console.log(comments)
       return comments;
     

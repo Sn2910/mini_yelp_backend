@@ -1,5 +1,4 @@
 import Restaurant from "../model/Restaurants.js"
-import Comment from "../model/Comments.js"
 import { getComments } from "./comments_operation.js"
 function _makeRestaurant(mdbRestaurant)  {
     return {
