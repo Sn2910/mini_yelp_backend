@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import restaurantRoute from "./routes/restaurants.js";
 import tagRoute from "./routes/tags.js";
 import cityRoute from "./routes/cities.js";
-import Comment from "./model/Comments.js";
+import { insertComment } from "./controllers/comments_operation.js";
 const app = express();
 dotenv.config();
 app.use(express.json());
@@ -52,7 +52,7 @@ app.post("/tags", (req, res) => {
 });
 
 app.post("/comment", async (req, res) => {
-  const newComment = await Comment.create({
+  const newComment = await insertComment({
     author: req.body.author,
     text: req.body.text,
     createdAt: req.body.createdAt,
